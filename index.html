@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>My followers Counter</title>
+		<link rel="stylesheet" href="style.css" />
+		<script
+			src="https://kit.fontawesome.com/e306afbf76.js"
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<body>
+		<div class="followers_container">
+			<h1>Followers Counter</h1>
+			<div class="followers">
+				<div class="follower_count">
+					<i class="fab fa-facebook-f fa-3x"></i>
+					<div class="counter" data-target="2500"></div>
+					<span>Facebook Subcriber</span>
+				</div>
+				<div class="follower_count">
+					<a href="http://twitter.com/@MMAbdulsalam001">
+						<i class="fab fa-twitter fa-3x"></i>
+					</a>
+					<div class="counter" data-target="1900"></div>
+					<span>Twitter Followers</span>
+				</div>
+				<div class="follower_count">
+					<i class="fab fa-youtube fa-3x"></i>
+					<div class="counter" data-target="1200"></div>
+					<span>Youtube Subcriber</span>
+				</div>
+			</div>
+		</div>
+		<div id="iamadev">
+			<a href="https://github.com/devAbdulsalam"
+				><p>!<span>Your</span>regular<span>Dev</span>.js</p>
+			</a>
+		</div>
+
+		<script>
+			const counters = document.querySelectorAll(".counter");
+
+			counters.forEach((counter) => {
+				counter.innerText = "0";
+
+				const updateCounter = () => {
+					const target = +counter.getAttribute("data-target");
+					const count = +counter.innerText;
+
+					const increment = target / 100;
+					if (count < target) {
+						counter.innerText = `${Math.ceil(count + increment)}`;
+						setTimeout(updateCounter, 1);
+					} else {
+						counter.innerText = target;
+					}
+				};
+				updateCounter();
+			});
+		</script>
+	</body>
+</html>
